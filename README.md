@@ -15,7 +15,7 @@ DOB_Facts_Calculator is a Python script that generates interesting facts and sta
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/DOB_Facts_Calculator.git
+    git clone https://github.com/Abhrankan-Chakrabarti/DOB_Facts_Calculator.git
     ```
 2. Navigate to the repository directory:
     ```bash
