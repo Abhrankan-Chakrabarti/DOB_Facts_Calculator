@@ -1,83 +1,139 @@
 import sys
-from math import ceil
-from datetime import datetime
 from calendar import leapdays, monthrange
+from datetime import datetime
+from math import ceil
 
-def format_number(n, sep = ',', f = ''):
-	"""Returns a number string, properly formatted with commas."""
-	n, l = f'{n}', -len(f'{n}')
-	for i in range(-1, l - 1, -1):
-		f += n[i] + sep if i % 3 == 0 and i - l else n[i]
-	def reverse_string(xyz, rev = ''):
-		for i in range(len(xyz) - 1, -1, -1):
-			rev += xyz[i]
-		return rev
-	return reverse_string(f)
+
+def format_number(n, sep=",", f=""):
+    """Returns a number string, properly formatted with commas."""
+    n, l = f"{n}", -len(f"{n}")
+    for i in range(-1, l - 1, -1):
+        f += n[i] + sep if i % 3 == 0 and i - l else n[i]
+
+    def reverse_string(xyz, rev=""):
+        for i in range(len(xyz) - 1, -1, -1):
+            rev += xyz[i]
+        return rev
+
+    return reverse_string(f)
+
 
 def generation(born):
     if born > 2012:
-        return 'Generation Alpha'
+        return "Generation Alpha"
     if born > 1996:
-        return 'Generation Z'
+        return "Generation Z"
     if born > 1980:
-        return 'Generation X'
+        return "Generation X"
     if born > 1964:
-        return 'Boomers II'
+        return "Boomers II"
     if born > 1954:
-        return 'Boomers I'
+        return "Boomers I"
     if born > 1945:
-        return 'Post War'
+        return "Post War"
     if born > 1927:
-        return 'WWII'
+        return "WWII"
+
 
 def lpn(n):
     return n if n < 10 or n in (11, 22, 33) else lpn(n // 10 + n % 10)
 
+
 def suffix(n):
     if n % 10 not in (1, 2, 3) or n % 100 in (11, 12, 13):
-        return 'th'
-    return {1: 'st', 2: 'nd', 3: 'rd'}[n % 10]
+        return "th"
+    return {1: "st", 2: "nd", 3: "rd"}[n % 10]
+
 
 def zodiac_sign(day, month):
     # checks month and date within the valid range
     # of a specified zodiac
-    if month == 'December':
-        astro_sign = ('Sagittarius', 'Jupiter') if (day < 22) else ('Capricorn', 'Saturn'), 'Holly', 'Turquoise, Tanzanite and Zircon'
+    if month == "December":
+        astro_sign = (
+            ("Sagittarius", "Jupiter") if (day < 22) else ("Capricorn", "Saturn"),
+            "Holly",
+            "Turquoise, Tanzanite and Zircon",
+        )
 
-    elif month == 'January':
-        astro_sign = ('Capricorn', 'Saturn') if (day < 20) else ('Aquarius', 'Uranus'), 'Carnation', 'Garnet'
+    elif month == "January":
+        astro_sign = (
+            ("Capricorn", "Saturn") if (day < 20) else ("Aquarius", "Uranus"),
+            "Carnation",
+            "Garnet",
+        )
 
-    elif month == 'February':
-        astro_sign = ('Aquarius', 'Uranus') if (day < 19) else ('Pisces', 'Neptune'), 'Violet', 'Amethyst'
+    elif month == "February":
+        astro_sign = (
+            ("Aquarius", "Uranus") if (day < 19) else ("Pisces", "Neptune"),
+            "Violet",
+            "Amethyst",
+        )
 
-    elif month == 'March':
-        astro_sign = ('Pisces', 'Neptune') if (day < 21) else ('Aries', 'Mars'), 'Daffodil', 'Aquamarine and Bloodstone'
+    elif month == "March":
+        astro_sign = (
+            ("Pisces", "Neptune") if (day < 21) else ("Aries", "Mars"),
+            "Daffodil",
+            "Aquamarine and Bloodstone",
+        )
 
-    elif month == 'April':
-        astro_sign = ('Aries', 'Mars') if (day < 20) else ('Taurus', 'Venus'), 'Daisy', 'Diamond'
+    elif month == "April":
+        astro_sign = (
+            ("Aries", "Mars") if (day < 20) else ("Taurus", "Venus"),
+            "Daisy",
+            "Diamond",
+        )
 
-    elif month == 'May':
-        astro_sign = ('Taurus', 'Venus') if (day < 21) else ('Gemini', 'Mercury'), 'Lily of the Valley', 'Emerald'
+    elif month == "May":
+        astro_sign = (
+            ("Taurus", "Venus") if (day < 21) else ("Gemini", "Mercury"),
+            "Lily of the Valley",
+            "Emerald",
+        )
 
-    elif month == 'June':
-        astro_sign = ('Gemini', 'Mercury') if (day < 21) else ('Cancer', 'The Moon'), 'Rose', 'Pearl, Moonstone and Alexandrite'
+    elif month == "June":
+        astro_sign = (
+            ("Gemini", "Mercury") if (day < 21) else ("Cancer", "The Moon"),
+            "Rose",
+            "Pearl, Moonstone and Alexandrite",
+        )
 
-    elif month == 'July':
-        astro_sign = ('Cancer', 'The Moon') if (day < 23) else ('Leo', 'The Sun'), 'Delphinium', 'Ruby'
+    elif month == "July":
+        astro_sign = (
+            ("Cancer", "The Moon") if (day < 23) else ("Leo", "The Sun"),
+            "Delphinium",
+            "Ruby",
+        )
 
-    elif month == 'August':
-        astro_sign = ('Leo', 'The Sun') if (day < 23) else ('Virgo', 'Mercury'), 'Gladiolus', 'Peridot, Spinel and Sardonyx'
+    elif month == "August":
+        astro_sign = (
+            ("Leo", "The Sun") if (day < 23) else ("Virgo", "Mercury"),
+            "Gladiolus",
+            "Peridot, Spinel and Sardonyx",
+        )
 
-    elif month == 'September':
-        astro_sign = ('Virgo', 'Mercury') if (day < 23) else ('Libra', 'Venus'), 'Aster', 'Sapphire'
+    elif month == "September":
+        astro_sign = (
+            ("Virgo", "Mercury") if (day < 23) else ("Libra", "Venus"),
+            "Aster",
+            "Sapphire",
+        )
 
-    elif month == 'October':
-        astro_sign = ('Libra', 'Venus') if (day < 23) else ('Scorpio', 'Pluto'), 'Marigold', 'Opal and Tourmaline'
+    elif month == "October":
+        astro_sign = (
+            ("Libra", "Venus") if (day < 23) else ("Scorpio", "Pluto"),
+            "Marigold",
+            "Opal and Tourmaline",
+        )
 
-    elif month == 'November':
-        astro_sign = ('Scorpio', 'Pluto') if (day < 22) else ('Sagittarius', 'Jupiter'), 'Chrysanthemum', 'Topaz and Citrine'
+    elif month == "November":
+        astro_sign = (
+            ("Scorpio", "Pluto") if (day < 22) else ("Sagittarius", "Jupiter"),
+            "Chrysanthemum",
+            "Topaz and Citrine",
+        )
 
     return astro_sign[0] + astro_sign[1:]
+
 
 print("This program prints some top facts about you from your date of birth.")
 dmy = input("Enter Your Date of Birth (DD/MM/YYYY) :\t")
@@ -101,7 +157,7 @@ if bday > n:
         bmonth = 1
         byear += 1
 bdate = datetime.strptime(f"{bday}/{bmonth}/{byear}", "%d/%m/%Y")
-on = 'was on' if bdate < now else 'will happen sometime on'
+on = "was on" if bdate < now else "will happen sometime on"
 bmonth = bdate.strftime("%B")
 month = DOB.strftime("%B")
 zodiac, planet, flower, stone = zodiac_sign(DOB.day, month)
@@ -144,7 +200,7 @@ It was the {weekdays}{suffix(weekdays)} {weekday} of {DOB.year}. If you were bor
 
 
 
- 
+
 
 View snazzy {month} {DOB.day}, {DOB.year} birthday facts that no one tells you about, such as your life path number, birthstone, ruling planet, zodiac sign and birth flower.
 
@@ -180,7 +236,7 @@ You have been alive for {format_number(days)} days. Your birth sign is {zodiac} 
 
 
 
- 
+
 
 You were born on a {weekday}
 
@@ -200,7 +256,7 @@ Your next birthday is on a {nextbweekday}
 
 
 
- 
+
 
 You’ve slept 33% of your life!
 
@@ -217,6 +273,8 @@ You’ve slept {format_number(days // 21)} week of your life.
 You’ve slept {format_number(days // 3)} days of your life.
 """
 print(log)
-if sys.argv[1:2] in (['-l'], ['--log']):
-    with open((sys.argv[2:3] or [f'{DOB.day} {month} {DOB.year} - Top 25 Facts.txt'])[0], 'w') as f:
+if sys.argv[1:2] in (["-l"], ["--log"]):
+    with open(
+        (sys.argv[2:3] or [f"{DOB.day} {month} {DOB.year} - Top 25 Facts.txt"])[0], "w"
+    ) as f:
         f.write(log)
