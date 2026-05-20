@@ -1,15 +1,20 @@
 # DOB_Facts_Calculator
 
-DOB_Facts_Calculator is a Python script that generates interesting facts and statistics about a person's date of birth. The script calculates various details such as the life path number, zodiac sign, birthstone, birth flower, age in days, and significant milestones like the billionth second.
+DOB_Facts_Calculator is a Python script that generates a detailed, personalised fact sheet from your date of birth — covering everything from numerology and astrology to sleep stats and birthday countdowns.
 
 ## Features
 
-- Calculates life path number
-- Determines zodiac sign, ruling planet, birthstone, and birth flower
-- Computes age in years, months, and days
-- Provides the exact number of days, hours, and minutes lived
-- Identifies significant milestones like the billionth second
-- Outputs formatted information about your birth date
+- **Life path number** — reduces your full birth date digits to a single digit (or master numbers 11, 22, 33) using numerology
+- **Zodiac sign, ruling planet, birthstone & birth flower** — determined from your birth month and day
+- **Generation label** — classifies your birth year (e.g. Gen Z, Gen Alpha, Boomers I/II, Post War, WWII)
+- **Exact age** — broken down into years, months, days, hours, and minutes
+- **Days, hours & minutes lived** — total counts since birth, formatted with commas
+- **Full moon count** — estimated number of full moons since your birth date
+- **Billionth second milestone** — the exact date you hit (or will hit) 1,000,000,000 seconds old
+- **Next birthday countdown** — days remaining, and the weekday of your next two birthdays
+- **Calendar reuse year** — the next year whose calendar is identical to your birth year
+- **Sleep statistics** — estimated time spent sleeping (assuming 8 hours/day), in years, months, weeks, and days
+- **Log file output** — optionally saves the full output to a `.txt` file via a command-line flag
 
 ## Usage
 
@@ -25,10 +30,26 @@ DOB_Facts_Calculator is a Python script that generates interesting facts and sta
     ```bash
     python DOB.py
     ```
+4. Optionally, save the output to a log file:
+    ```bash
+    python DOB.py -l
+    # or specify a custom filename:
+    python DOB.py -l my_facts.txt
+    ```
 
 ## Example
 
-When you run the script, you will be prompted to enter your date of birth in the format `DD/MM/YYYY`. The script will then output a detailed log of facts and statistics about your date of birth.
+When you run the script, you will be prompted to enter your date of birth:
+
+```
+Enter Your Date of Birth (DD/MM/YYYY):
+```
+
+The script then prints a full fact sheet including your zodiac sign, life path number, exact age, billionth second date, next birthday countdown, sleep statistics, and more.
+
+## Requirements
+
+- Python 3.x (no third-party dependencies — uses only the standard library)
 
 ## License
 
@@ -36,4 +57,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Author
 
-This script was created by Abhrankan Chakrabarti.
+This script was created by [Abhrankan Chakrabarti](https://github.com/Abhrankan-Chakrabarti).
